@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colors -->
+    <color name="primary_color">#FF4081</color> <!-- Pink color for buttons -->
+    <color name="primary_light">#FF79B8</color> <!-- Lighter pink for backgrounds -->
+    <color name="primary_dark">#D30058</color> <!-- Darker pink for text or icons -->
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="background_color">#FFFFFF</color> <!-- White background for general use -->
+    <color name="light_background">#F5F5F5</color> <!-- Light grey background for cards -->
+
+    <color name="button_color">#FF4081</color> <!-- Button color -->
+    <color name="button_pressed">#D30058</color> <!-- Button pressed color -->
+
+    <color name="primary_text_color">#333333</color> <!-- Dark text color for readability -->
+    <color name="secondary_text_color">#757575</color> <!-- Light text color for secondary content -->
+
+    <color name="error_color">#D32F2F</color> <!-- Red color for error messages -->
+    <color name="success_color">#388E3C</color> <!-- Green color for success messages -->
+
+    <!-- Dimensions -->
+    <dimen name="activity_margin">16dp</dimen> <!-- Margin around activity content -->
+    <dimen name="button_padding">12dp</dimen> <!-- Padding for buttons -->
+    <dimen name="text_size_large">18sp</dimen> <!-- Large text size for buttons -->
+    <dimen name="text_size_medium">16sp</dimen> <!-- Medium text size for headings -->
+    <dimen name="text_size_small">14sp</dimen> <!-- Small text size for descriptions -->
+
+    <!-- Strings -->
+    <string name="app_name">TripTracker</string> <!-- App name -->
+    <string name="welcome_message">Welcome to TripTracker</string> <!-- Splash screen message -->
+
+    <string name="add_expense">Add New Expense</string> <!-- Button text -->
+    <string name="view_dashboard">View Dashboard</string> <!-- Button text -->
+    <string name="view_expense_list">View Expense List</string> <!-- Button text -->
+    <string name="save">Save</string> <!-- Save button text -->
+
+    <!-- Expense form labels -->
+    <string name="expense_name">Expense Name</string>
+    <string name="expense_amount">Amount</string>
+    <string name="expense_category">Category</string>
+    <string name="expense_date">Date</string>
+
+    <!-- Error and success messages -->
+    <string name="error_message">An error occurred. Please try again.</string>
+    <string name="no_data_found">No data found</string> <!-- No data found message -->
+    <string name="loading">Loading...</string> <!-- Loading message -->
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Expense Dashboard</string>
+    <string name="total_expense">Total Expense: $0</string> <!-- Placeholder for total expense -->
+    <string name="category_expense">Category Breakdown</string> <!-- Placeholder for category expenses -->
+
+    <!-- Expense List -->
+    <string name="expense_details">Expense Details</string> <!-- Expense item details -->
+
+    <!-- Firebase Messages -->
+    <string name="firebase_error">Unable to load data from Firebase. Please try again.</string>
+
+    <!-- Filter Option -->
+    <string name="filter_by_category">Filter by Category</string> <!-- Category filter label -->
+</resources>
