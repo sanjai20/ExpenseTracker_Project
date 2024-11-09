@@ -49,4 +49,8 @@ public class Expense {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getDate() {
+        return "";
+    }
 }

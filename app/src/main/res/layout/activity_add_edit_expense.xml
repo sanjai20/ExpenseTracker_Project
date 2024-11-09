@@ -23,9 +23,10 @@
             android:id="@+id/expenseNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
             android:hint="e.g., Lunch at cafe"
-            android:padding="12dp"
-            android:background="@drawable/edittext_background" />
+            android:minHeight="48dp"
+            android:padding="12dp" />
 
         <!-- Amount Field -->
         <TextView
@@ -41,10 +42,11 @@
             android:id="@+id/amountEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
+            android:background="@drawable/edittext_background"
             android:hint="e.g., 200"
-            android:padding="12dp"
-            android:background="@drawable/edittext_background" />
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:padding="12dp" />
 
         <!-- Category Dropdown -->
         <TextView
