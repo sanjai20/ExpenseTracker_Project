@@ -28,6 +28,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.example.myapplication' // Define the namespace here
 }
 
 dependencies {
@@ -45,4 +46,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-auth'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    implementation 'androidx.fragment:fragment:1.5.5' // Updated to the latest version
+    implementation 'androidx.transition:transition:1.5.1' // Updated to the latest version
 }

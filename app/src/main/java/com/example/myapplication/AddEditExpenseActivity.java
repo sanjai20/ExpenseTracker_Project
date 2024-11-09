@@ -1,9 +1,9 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -12,51 +12,55 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AddEditExpenseActivity extends AppCompatActivity {
-    private EditText expenseNameEditText, amountEditText;
+    private EditText expenseNameEditText, expenseAmountEditText;
     private Spinner categorySpinner;
-    private DatePicker expenseDatePicker;
-    private Button saveButton;
+    private Button saveExpenseButton;
     private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_edit_expense);
-
-        expenseNameEditText = findViewById(R.id.expenseNameEditText);
-        amountEditText = findViewById(R.id.amountEditText);
-        categorySpinner = findViewById(R.id.categorySpinner);
-        expenseDatePicker = findViewById(R.id.expenseDatePicker);
-        saveButton = findViewById(R.id.saveButton);
+        setContentView(R.layout.activity_add_edit_expense); // activity_add_edit_expense.xml
 
         // Initialize Firebase reference
         databaseReference = FirebaseDatabase.getInstance().getReference("expenses");
 
-        saveButton.setOnClickListener(v -> saveExpense());
+        // Initialize UI elements
+        expenseNameEditText = findViewById(R.id.expenseNameEditText);
+        expenseAmountEditText = findViewById(R.id.expenseAmountEditText);
+        categorySpinner = findViewById(R.id.categorySpinner);
+        saveExpenseButton = findViewById(R.id.saveExpenseButton);
+
+        saveExpenseButton.setOnClickListener(v -> saveExpense());
     }
 
     private void saveExpense() {
-        String name = expenseNameEditText.getText().toString();
-        String amountStr = amountEditText.getText().toString();
+        // Get data from input fields
+        String name = expenseNameEditText.getText().toString().trim();
+        String amountStr = expenseAmountEditText.getText().toString().trim();
         String category = categorySpinner.getSelectedItem().toString();
-        int day = expenseDatePicker.getDayOfMonth();
-        int month = expenseDatePicker.getMonth();
-        int year = expenseDatePicker.getYear();
-        String date = day + "-" + (month + 1) + "-" + year;
 
-        if (name.isEmpty() || amountStr.isEmpty()) {
-            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(amountStr)) {
+            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
         double amount = Double.parseDouble(amountStr);
 
-        String id = databaseReference.push().getKey();
-        Expense expense = new Expense(id, name, amount, category, date);
-        databaseReference.child(id).setValue(expense);
+        // Generate a unique ID for the expense
+        String expenseId = databaseReference.push().getKey();
 
-        Toast.makeText(this, "Expense saved", Toast.LENGTH_SHORT).show();
-        finish();
+        // Create an Expense object
+        Expense expense = new Expense(name, amount, category, expenseId);
+
+        // Save the expense to Firebase
+        if (expenseId != null) {
+            databaseReference.child(expenseId).setValue(expense)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(AddEditExpenseActivity.this, "Expense saved", Toast.LENGTH_SHORT).show();
+                        finish(); // Close the activity after saving
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(AddEditExpenseActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+        }
     }
 }
-
