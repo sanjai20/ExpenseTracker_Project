@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
-    private Button dashboardButton;
     private Button addExpenseButton;
     private Button expenseListButton;
 
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Initialize buttons
-        dashboardButton = findViewById(R.id.dashboardButton);
+        Button dashboardButton = findViewById(R.id.dashboardButton);
         addExpenseButton = findViewById(R.id.addExpenseButton);
         expenseListButton = findViewById(R.id.expenseListButton);
 

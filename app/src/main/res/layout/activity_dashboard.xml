@@ -18,12 +18,11 @@
         android:paddingBottom="8dp" />
 
     <!-- Breakdown Section -->
-    <RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryBreakdownRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingTop="16dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
         android:scrollbars="vertical" />
 
     <!-- Floating Action Button for Adding Expense -->

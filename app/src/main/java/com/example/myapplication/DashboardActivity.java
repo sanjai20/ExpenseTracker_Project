@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,7 +11,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class DashboardActivity extends AppCompatActivity {
-    private TextView totalExpenseText;
     private RecyclerView categoryBreakdownRecyclerView;
     private FloatingActionButton addExpenseButton;
     private DatabaseReference databaseReference;
@@ -22,19 +20,21 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        totalExpenseText = findViewById(R.id.totalExpenseText);
+        // Initialize views
+        TextView totalExpenseText = findViewById(R.id.totalExpenseText);
         categoryBreakdownRecyclerView = findViewById(R.id.categoryBreakdownRecyclerView);
         addExpenseButton = findViewById(R.id.addExpenseButton);
 
         // Initialize Firebase reference
         databaseReference = FirebaseDatabase.getInstance().getReference("expenses");
 
-        // Set up RecyclerView
+        // Set up RecyclerView with LinearLayoutManager
         categoryBreakdownRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Load expenses and calculate total and category breakdown
         loadExpenseSummary();
 
+        // Set listener for adding a new expense
         addExpenseButton.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, AddEditExpenseActivity.class);
             startActivity(intent);
@@ -45,4 +45,3 @@ public class DashboardActivity extends AppCompatActivity {
         // Code to retrieve data from Firebase and calculate total expense
     }
 }
-

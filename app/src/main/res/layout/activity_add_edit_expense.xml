@@ -60,7 +60,8 @@
             android:id="@+id/categorySpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittext_background" />
+            android:background="@drawable/edittext_background"
+            android:minHeight="48dp" />
 
         <!-- Date Picker -->
         <TextView
